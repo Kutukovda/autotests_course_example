@@ -4,7 +4,7 @@
 
 from statistics import mean
 def get_list_info(lst):
-    min_element = min(lst)
+    min_elem = min(lst)
     max_elem = max(lst)
     sum_list = round(sum(lst), 2)
     average = round(sum(lst) / 7, 2)
