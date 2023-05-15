@@ -8,7 +8,14 @@
 # 4 --> 0 (4 уже одна цифра, а значит мы проделали 0 итераций)
 
 def multiplication_chain(num):
-    # Здесь нужно написать код
+    count_multy = 0
+    while num // 10 >= 1:
+        nlist = [int(x) for x in str(num)]
+        num = 1
+        for i in nlist:
+            num = num * i
+        count_multy += 1
+
     return count_multy
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
