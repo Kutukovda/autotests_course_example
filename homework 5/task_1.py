@@ -14,8 +14,8 @@ def letter_stat(our_str):
     # Создадим список из полученной строки, символ - ключ, значение = 0
     letters_dict = {item: 0 for item in our_str}
     # пробегаем строку и для каждого символа увеличиваем на 1 значение с соответствующим ключом
-    for i in range(0, len(our_str)):
-        letters_dict[our_str[i]] += 1
+    for j in range(0, len(our_str)):
+        letters_dict[our_str[j]] += 1
     return letters_dict
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
