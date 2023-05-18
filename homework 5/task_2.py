@@ -7,7 +7,19 @@
 
 
 def repeats(our_str):
-    # Здесь нужно написать код
+    our_str = list(our_str)
+    count = 0
+    dict1 = {x: None for x in range(0, len(our_str))}
+    lst_sup = []
+    # вырезаю из списка первый элемент, помещаю его во вспомогательный список,
+    # затем проверяю, сколько раз он есть в этом списке.
+    # результаты записываю в значение словаря
+    for i in range(0, len(our_str)):
+        a = our_str.pop(0)
+        lst_sup.append(a)
+        dict1[i] = a + '_' + str(lst_sup.count(a))
+    # значения словаря джойню в строку
+    new_str = ''.join(dict1.values())
     return new_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
