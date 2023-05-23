@@ -5,10 +5,18 @@
 # local_function должна изменить значение переменной msg на значение 2
 
 def global_function():
+  """
+Выводит переменную msg
+  :return:
+  """
   msg = 1
   def local_function():
-  # Здесь нужно написать код
-   
+    """
+Функция изменяет переменную msg в объемлющей функции global_function()
+    """
+    nonlocal msg
+    msg = 2
+  local_function()
   return msg
 
 assert global_function() == 2, 'Значение переменной msg должно быть равно 2'

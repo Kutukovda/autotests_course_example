@@ -13,7 +13,7 @@ string = 'Hello'
 
 def global_changes():
     """
-Функция  изменять и возвращать значения глобальных переменных number и string
+Функция изменяет и возвращает значения глобальных переменных number и string
     :return: number, string
     """
     global number, string
@@ -21,7 +21,7 @@ def global_changes():
     string = 'Hello, dear friend'
     return number, string
 
-print(global_changes())
+global_changes()
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 assert number == 5, 'Переменная number должна иметь значение 5'
