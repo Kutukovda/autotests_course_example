@@ -19,7 +19,17 @@
 
 
 def everything_for_your_cat(cats_data):
-    # Здесь нужно написать код
+    dict1 = {}
+    for k in range(0, len(cats_data)):
+        cat = cats_data[k][0] + ', ' + str(cats_data[k][1])
+        owner = cats_data[k][2] + ' ' + cats_data[k][3]
+        if owner not in dict1.keys():
+            dict1.update({owner: cat})  # если такого владельца ещё нет в словаре, добавляю вместе с питомцом
+        else:
+            dict1[owner] = dict1[owner] + '; ' + cat  # если есть, то обновляю значение, прибавляя нового через "; "
+    our_str = """"""
+    for j in dict1.keys():
+        our_str += f'{j}: {dict1[j]}\n'
     return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
