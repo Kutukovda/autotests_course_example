@@ -14,7 +14,36 @@
 
 
 def scrabble(word):
-    # Здесь нужно написать код
+    point1 = ['а', 'в', 'е', 'ё', 'и', 'н', 'о', 'р', 'с', 'т']
+    point2 = ['д', 'к', 'л', 'м', 'п', 'у']
+    point3 = ['б', 'г', 'ь', 'я']
+    point4 = ['й', 'ы']
+    point5 = ['ж', 'з', 'х', 'ц', 'ч']
+    point8 = ['ф', 'ш', 'э', 'ю']
+    point10 = ['щ']
+    point15 = ['ъ']
+    dict1 = {item: 0 for item in word}
+    # пробегаем строку и для каждого символа увеличиваем на 1 значение с соответствующим ключом
+    for j in range(0, len(word)):
+        dict1[word[j]] += 1
+    for k in dict1:
+        if k in point15:
+            dict1[k] *= 15
+        elif k in point10:
+            dict1[k] *= 10
+        elif k in point8:
+            dict1[k] *= 8
+        elif k in point5:
+            dict1[k] *= 5
+        elif k in point4:
+            dict1[k] *= 4
+        elif k in point3:
+            dict1[k] *= 3
+        elif k in point2:
+            dict1[k] *= 2
+        else:
+            continue
+    points = sum(list(dict1.values()))
     return points
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
