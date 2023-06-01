@@ -56,8 +56,7 @@ class PersonInfo:
         # новая зарпалата теперь вычисляет по формуле:
         text = "".join(self.department)
         count = sorted([text.count(letter) for letter in set(text)], reverse=True)
-        sum_pop_letters = count[0] + count[1] + count[2]  # суммарное кол-во вхождений трех наиболее часто встречающихся букв из списка подразделений
-        newsalary = 1337 * self.age * sum_pop_letters
+        newsalary = 1337 * self.age * sum(count[0:3])
         return newsalary
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
