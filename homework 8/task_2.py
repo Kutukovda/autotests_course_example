@@ -18,7 +18,23 @@ import unittest  # Не удалять
 
 # Здесь пишем код
 class Trigon:
+    def __init__(self, *args):
+        self.args = args
+        try:
+            for i in args:
+                if i == int(i):
+                    args = i
+        except TypeError:
+            print('Стороны должны быть числами')
 
+        except ValueError:
+            print('Стороны должны быть положительными')
+
+        except Exception:
+            print('Не треугольник')
+
+        except IndexError:
+            print(f'Передано {args} аргументов, а ожидается 3')
 
 
 # 1) Если хотя бы одна сторона передана не числом,

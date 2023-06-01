@@ -13,7 +13,7 @@ def segment(dot1, dot2):
     try:
         return dot1[0] + dot1[1] + dot2[0] + dot2[1]
     except TypeError as t:
-        return str(t)[::-1] 
+        return str(t)[::-1]
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
