@@ -7,6 +7,14 @@
 #
 # for i in sorted(set(text), reverse=True):
 #     print(i, end=" ")
-dot1 = (5, 5)
-dot2 = (3, 4)
-print(dot1 + dot2)
+# dot1 = (5, 5)
+# dot2 = (3, 4)
+# print(dot1 + dot2)
+
+def segment(dot1, dot2):
+    """Возвращает сумму всех координат"""
+    try:
+        return dot1[0] + dot1[1] + dot2[0] + dot2[1]
+    except TypeError as t:
+        return print(str(t), type(str(t)))
+segment((2, 3), ('4', 5))

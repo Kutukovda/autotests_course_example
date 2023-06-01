@@ -9,10 +9,11 @@
 
 # Здесь пишем код
 def segment(dot1, dot2):
+    """Возвращает сумму всех координат"""
     try:
-        return sum(dot1 + dot2)
-    except Exception as e:
-        return "".join(list(e.args[0])[::-1])
+        return dot1[0] + dot1[1] + dot2[0] + dot2[1]
+    except TypeError as t:
+        return str(t)[::-1] 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
@@ -32,7 +33,6 @@ test_data = [
 
 
 for i, d in enumerate(data):
-    # print(segment(i, d))
     assert segment(*d) == test_data[i], f'С набором {d} есть ошибка, не проходит проверку'
     print(f'Тестовый набор {d} прошёл проверку')
 print('Всё ок')
