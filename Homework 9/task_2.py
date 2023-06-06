@@ -32,5 +32,61 @@
 
 
 import datetime
-
+import time
 # Здесь пишем код
+def func_log(file_log='log.txt'):
+    """
+    Декоратор, который создает файл по пути file_log где пишет название функции и время ее запуска
+    :param file_log: Путь до файла
+    :return: Результат выполнения функции
+    """
+    def log(func):
+        """
+        Обертка выполнения функции
+        :param func: Функция
+        :return: Результат выполнения функции
+        """
+        def wrapper(*args, **kwargs):
+            """
+            Обертка открывающая и заполняющая файл логов
+            :param args: Параметры функции
+            :param kwargs: Параметры функции
+            :return: Результат выполнения функции
+            """
+            with open(file_log, mode="a", encoding="utf-8") as file:
+                call_time = datetime.datetime.now().strftime("%d.%m %H:%M:%S")
+                file.write(f"{func.__name__} вызвана {call_time}\n")
+
+            res = func(*args, ** kwargs)
+            return res
+
+        wrapper.__doc__ = func.__doc__
+        wrapper.__name__ = func.__name__
+        wrapper.__wrapped__ = func
+        return wrapper
+    return log
+
+
+@func_log()
+def func1():
+    """Здесь должен быть одинаковый текст"""
+    time.sleep(3)
+
+
+@func_log(file_log='func2.txt')
+def func2():
+    """Здесь должен быть одинаковый текст"""
+    time.sleep(5)
+
+
+def func_bez_decoratora():
+    """Здесь должен быть одинаковый текст"""
+    time.sleep(2)
+
+
+func1()
+func2()
+
+help(func1)
+help(func2)
+help(func_bez_decoratora)

@@ -1,38 +1,10 @@
-# class Trigon:
-#
-#     @classmethod
-#     def valid_triangle(cls, args):
-#         if not (
-#                 args[0] < args[1] + args[2] and
-#                 args[1] < args[0] + args[2] and
-#                 args[2] < args[0] + args[1]
-#         ):
-#             raise Exception("Не треугольник")
-#
-#     @classmethod
-#     def date_validation(cls, args):
-#         if len(args) != 3:
-#             print(len(args))
-#             raise IndexError(f"Передано {len(args)} аргументов, а ожидается 3")
-#         elif not all([isinstance(x, int) for x in args]):
-#             raise TypeError('Стороны должны быть числами')
-#         elif not all([x > 0 for x in args]):
-#             raise ValueError('Стороны должны быть положительными')
-#
-#     def __init__(self, args):
-#         try:
-#             Trigon.date_validation(args)
-#         except (IndexError, TypeError, ValueError) as e:
-#             raise e
-#         else:
-#             Trigon.valid_triangle(args)
-#
-#
-#
-# pt = Trigon((3, 4, 5))
-#
-def f(*args):
-    l = [x for x in args]
-    print(len(l))
+# Дан текстовый файл test_file/task1_data.txt
+# Он содержит текст, в словах которого есть цифры.
+# Необходимо удалить все цифры и записать получившийся текст в файл test_file/task1_answer.txt
 
-f(3, '7',)
+with open(r'C:\autotests_course\Homework9\test_file\task1_data.txt', mode='r', encoding='utf-8') as f1, \
+     open(r'C:\autotests_course\Homework9\test_file\task1_answer.txt', mode='w', encoding='utf-8') as f2:
+    f2.write(''.join(i for i in f1.read() if i not in '1234567890'))
+
+f1.close()
+f2.close()
