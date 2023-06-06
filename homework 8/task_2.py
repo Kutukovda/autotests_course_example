@@ -15,39 +15,34 @@
 
 import unittest  # Не удалять
 
-
 # Здесь пишем код
 class Trigon:
+
+    @classmethod
+    def valid_triangle(cls, x, y, z):
+        if not (
+                x < y + z and
+                y < x + z and
+                z < x + y
+        ):
+            raise Exception("Не треугольник")
+
+    @classmethod
+    def date_validation(cls, *args):
+        if len(list([x for x in args])) != 3:
+            raise IndexError(f"Передано {len([x for x in args])} аргументов, а ожидается 3")
+        elif not all([isinstance(x, int) for x in args]):
+            raise TypeError('Стороны должны быть числами')
+        elif not all([x > 0 for x in args]):
+            raise ValueError('Стороны должны быть положительными')
+
     def __init__(self, *args):
-        self.args = args
         try:
-            for i in args:
-                if i == int(i):
-                    args = i
-        except TypeError:
-            print('Стороны должны быть числами')
-
-        except ValueError:
-            print('Стороны должны быть положительными')
-
-        except Exception:
-            print('Не треугольник')
-
-        except IndexError:
-            print(f'Передано {args} аргументов, а ожидается 3')
-
-
-# 1) Если хотя бы одна сторона передана не числом,
-# то падаем с TypeError и текстом 'Стороны должны быть числами'
-
-# 2) Если хотя бы одна сторона передана нулем или отрицательным числом,
-# то падаем с ValueError и текстом 'Стороны должны быть положительными'
-
-# 3) Если не соблюдается неравество треугольника,
-# то Exception и текст "Не треугольник"
-
-# 4) Если передано не 3 аргумента, то IndexError "Передано {n} аргументов, а ожидается 3", где n - кол-во аргументов
-# Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
+            Trigon.date_validation(*args)
+        except (IndexError, TypeError, ValueError) as e:
+            raise e
+        else:
+            Trigon.valid_triangle(*args)
 
 
 class MyTestCase(unittest.TestCase):
