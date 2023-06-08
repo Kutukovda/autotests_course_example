@@ -14,6 +14,28 @@
 # iuy qnikkgxvxfxtxv
 
 import random
+import string
 
 
 # Здесь пишем код
+def generate_random_name():
+    """
+    Генератор создающий случайные два слова из латинских букв от 1 до 15 символов, разделенных пробелами
+    :return: Строка из двух последовательности английских букв от 1 до 15 символов случайно разделенных пробелом
+    """
+    while True:
+        letters = string.ascii_lowercase
+        list_string = []
+        for i in range(2):
+            len_string = random.randint(1, 15)
+            word = "".join(random.choices(letters, k=len_string))
+            list_string.append(word)
+        two_word = " ".join(list_string)
+        yield two_word
+
+
+gen = generate_random_name()
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print(next(gen))

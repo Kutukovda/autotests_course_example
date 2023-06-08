@@ -4,3 +4,25 @@
 
 import pytest
 
+
+@pytest.mark.usefixtures("class_fixture")
+class Test:
+
+    def test_1(self):
+        """
+        Тест проверки логики умножения
+        """
+        assert 10 * 5 == 50, "проверка логики умножения"
+
+    def test_2(self):
+        """
+        Тест проверки логики сравнения
+        """
+        a = True
+        b = False
+        assert a and b == b, "проверка логики сравнения"
+
+    def test_3(self, time_test):
+        """
+        Тест проверки времени
+        """
